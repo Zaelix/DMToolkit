@@ -42,8 +42,11 @@
             this.addToTrackerButton = new System.Windows.Forms.Button();
             this.initTracker = new System.Windows.Forms.ListView();
             this.initiativeTrackerLabel = new System.Windows.Forms.Label();
+            this.bodyLabel = new System.Windows.Forms.Label();
+            this.bodyAtrInput = new System.Windows.Forms.NumericUpDown();
             this.combatPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charInitBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bodyAtrInput)).BeginInit();
             this.SuspendLayout();
             // 
             // combatButton
@@ -58,6 +61,8 @@
             // 
             // combatPanel
             // 
+            this.combatPanel.Controls.Add(this.bodyAtrInput);
+            this.combatPanel.Controls.Add(this.bodyLabel);
             this.combatPanel.Controls.Add(this.initTrackerSortButton);
             this.combatPanel.Controls.Add(this.delCharButton);
             this.combatPanel.Controls.Add(this.editCharButton);
@@ -192,6 +197,23 @@
             this.initiativeTrackerLabel.TabIndex = 0;
             this.initiativeTrackerLabel.Text = "Initiative Tracker";
             // 
+            // bodyLabel
+            // 
+            this.bodyLabel.AutoSize = true;
+            this.bodyLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bodyLabel.Location = new System.Drawing.Point(541, 77);
+            this.bodyLabel.Name = "bodyLabel";
+            this.bodyLabel.Size = new System.Drawing.Size(40, 16);
+            this.bodyLabel.TabIndex = 13;
+            this.bodyLabel.Text = "Body";
+            // 
+            // bodyAtrInput
+            // 
+            this.bodyAtrInput.Location = new System.Drawing.Point(594, 77);
+            this.bodyAtrInput.Name = "bodyAtrInput";
+            this.bodyAtrInput.Size = new System.Drawing.Size(50, 20);
+            this.bodyAtrInput.TabIndex = 14;
+            // 
             // DMTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -204,6 +226,7 @@
             this.combatPanel.ResumeLayout(false);
             this.combatPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.charInitBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bodyAtrInput)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -224,6 +247,8 @@
         private System.Windows.Forms.Button editCharButton;
         private System.Windows.Forms.Button delCharButton;
         private System.Windows.Forms.Button initTrackerSortButton;
+        private System.Windows.Forms.NumericUpDown bodyAtrInput;
+        private System.Windows.Forms.Label bodyLabel;
     }
 }
 

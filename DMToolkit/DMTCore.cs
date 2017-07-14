@@ -125,26 +125,5 @@ namespace DMToolkit
             initTracker.Items.AddRange(lvia);
         }
     }
-    public class SimpleCharacter {
-        private string name;
-        private int init;
-        private int physDamage;
-        private int stunDamage;
-        private int physDamagePool;
-        private int stunDamagePool;
-
-        public SimpleCharacter(string charName, int initiative) {
-            this.name = charName;
-            this.init = initiative;
-        }
-
-        public string Name {
-            get { return this.name; }
-            set { this.name = value; }
-        }
-        public int Init {
-            get { return this.init; }
-            set { this.init = value; }
-        }
-    }
+    
 }
