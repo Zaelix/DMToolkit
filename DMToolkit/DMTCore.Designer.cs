@@ -99,6 +99,7 @@
             this.delCharButton.TabIndex = 11;
             this.delCharButton.Text = "Delete Character";
             this.delCharButton.UseVisualStyleBackColor = true;
+            this.delCharButton.Click += new System.EventHandler(this.delCharButton_Click);
             // 
             // editCharButton
             // 

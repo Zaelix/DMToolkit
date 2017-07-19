@@ -117,6 +117,15 @@ namespace DMToolkit
             }
         }
 
+        private void delCharButton_Click(object sender, EventArgs e)
+        {
+            charListBox.DataSource = null;
+            charList.RemoveAt(charListBox.SelectedIndex);
+            charListBox.DataSource = charList;
+            charListBox.ValueMember = "Name";
+            charListBox.DisplayMember = "name";
+        }
+
         private void initTrackerSortButton_Click(object sender, EventArgs e)
         {
             initTracker.Items.Clear();
@@ -124,6 +133,7 @@ namespace DMToolkit
             ListViewItem[] lvia = makeLVIAFromArray(initTrackerList);
             initTracker.Items.AddRange(lvia);
         }
+
     }
     
 }

@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleCharacter.cs" />
     <EmbeddedResource Include="DMTCore.resx">
       <DependentUpon>DMTCore.cs</DependentUpon>
     </EmbeddedResource>
