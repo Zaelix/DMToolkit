@@ -47,6 +47,14 @@ namespace DMToolkit
                 SimpleCharacter chara = (SimpleCharacter)charListBox.SelectedItem;
                 charNameBox.Text = chara.Name;
                 charInitBox.Value = chara.Init;
+                bodyAtrInput.Value = chara.Body;
+                agilityAtrInput.Value = chara.Agility;
+                reactionAtrInput.Value = chara.Reaction;
+                strengthAtrInput.Value = chara.Strength;
+                charismaAtrInput.Value = chara.Charisma;
+                intuitionAtrInput.Value = chara.Intuition;
+                logicAtrInput.Value = chara.Logic;
+                willpowerAtrInput.Value = chara.Willpower;
             }
             else {
                 editCharButton.Enabled = false;
@@ -56,7 +64,8 @@ namespace DMToolkit
 
         private void createCharButton_Click(object sender, EventArgs e)
         {
-            SimpleCharacter chara = new SimpleCharacter(charNameBox.Text, (int)charInitBox.Value);
+            SimpleCharacter chara = new SimpleCharacter(charNameBox.Text, (int)charInitBox.Value, (int)bodyAtrInput.Value, (int)agilityAtrInput.Value, (int)reactionAtrInput.Value, 
+                (int)strengthAtrInput.Value, (int)charismaAtrInput.Value, (int)intuitionAtrInput.Value, (int)logicAtrInput.Value, (int)willpowerAtrInput.Value);
             charListBox.DataSource = null;
             charList.Add(chara);
 
@@ -84,6 +93,12 @@ namespace DMToolkit
             }
         }
 
+        private void removeFromTrackerButton_Click(object sender, EventArgs e)
+        {
+            initTrackerList.RemoveAt(initTracker.SelectedIndices[0]);
+            initTracker.Items.RemoveAt(initTracker.SelectedIndices[0]);
+        }
+
         private ListViewItem[] makeLVIAFromArray(List<SimpleCharacter> initList) {
             ListViewItem[] lvia = new ListViewItem[initList.Count];
             int i = 0;
@@ -106,7 +121,8 @@ namespace DMToolkit
         {
             if (charListBox.SelectedItem != null)
             {
-                SimpleCharacter chara = new SimpleCharacter(charNameBox.Text, (int)charInitBox.Value);
+                SimpleCharacter chara = new SimpleCharacter(charNameBox.Text, (int)charInitBox.Value, (int)bodyAtrInput.Value, (int)agilityAtrInput.Value, (int)reactionAtrInput.Value,
+                    (int)strengthAtrInput.Value, (int)charismaAtrInput.Value, (int)intuitionAtrInput.Value, (int)logicAtrInput.Value, (int)willpowerAtrInput.Value);
                 charList[charListBox.SelectedIndex] = chara;
                 charListBox.DataSource = null;
                 //charList.RemoveAt(charListBox.SelectedIndex-1);
@@ -119,8 +135,8 @@ namespace DMToolkit
 
         private void delCharButton_Click(object sender, EventArgs e)
         {
-            charListBox.DataSource = null;
             charList.RemoveAt(charListBox.SelectedIndex);
+            charListBox.DataSource = null;
             charListBox.DataSource = charList;
             charListBox.ValueMember = "Name";
             charListBox.DisplayMember = "name";
@@ -133,7 +149,6 @@ namespace DMToolkit
             ListViewItem[] lvia = makeLVIAFromArray(initTrackerList);
             initTracker.Items.AddRange(lvia);
         }
-
     }
     
 }
