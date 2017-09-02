@@ -21,6 +21,7 @@ namespace DMToolkit
         {
             InitializeComponent();
             MakeInitTracker();
+            PersistentListHandler.getPersistentList(this);
         }
 
         private void MakeInitTracker() {
@@ -66,6 +67,11 @@ namespace DMToolkit
         {
             SimpleCharacter chara = new SimpleCharacter(charNameBox.Text, (int)charInitBox.Value, (int)bodyAtrInput.Value, (int)agilityAtrInput.Value, (int)reactionAtrInput.Value, 
                 (int)strengthAtrInput.Value, (int)charismaAtrInput.Value, (int)intuitionAtrInput.Value, (int)logicAtrInput.Value, (int)willpowerAtrInput.Value);
+            addCharacterToCharacterList(chara);
+            PersistentListHandler.WriteListFile(charList);
+        }
+
+        public void addCharacterToCharacterList(SimpleCharacter chara) {
             charListBox.DataSource = null;
             charList.Add(chara);
 
@@ -131,6 +137,7 @@ namespace DMToolkit
                 charListBox.ValueMember = "Name";
                 charListBox.DisplayMember = "name";
             }
+            PersistentListHandler.WriteListFile(charList);
         }
 
         private void delCharButton_Click(object sender, EventArgs e)
@@ -140,6 +147,7 @@ namespace DMToolkit
             charListBox.DataSource = charList;
             charListBox.ValueMember = "Name";
             charListBox.DisplayMember = "name";
+            PersistentListHandler.WriteListFile(charList);
         }
 
         private void initTrackerSortButton_Click(object sender, EventArgs e)
