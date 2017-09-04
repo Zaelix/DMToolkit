@@ -5,7 +5,6 @@ namespace DMToolkit
     public class SimpleCharacter
     {
         private string name;
-        private int init;
         private int physDamage = 0;
         private int stunDamage = 0;
         private int physDamageMax = 9;
@@ -22,18 +21,20 @@ namespace DMToolkit
         private int willpower = 1;
 
         // Special Attributes
+        private int initDice = 1;
         private int edge = 1;
         private int magic = 0;
         private int resonance = 0;
         private int depth = 0;
 
         // Derived Attributes
+        private int init;
+        private int currentInit;
         private int armor = 0;
 
         public SimpleCharacter(string charName, int initiative, int BOD, int AGI, int REA, int STR, int CHA, int INT, int LOG, int WIL)
         {
             this.name = charName;
-            this.init = initiative;
             this.body = BOD;
             this.agility = AGI;
             this.reaction = REA;
@@ -42,6 +43,8 @@ namespace DMToolkit
             this.intuition = INT;
             this.logic = LOG;
             this.willpower = WIL;
+            this.init = REA + INT;
+            this.currentInit = initiative;
         }
 
         public string Name
@@ -53,6 +56,16 @@ namespace DMToolkit
         {
             get { return this.init; }
             set { this.init = value; }
+        }
+        public int InitDice
+        {
+            get { return this.initDice; }
+            set { this.initDice = value; }
+        }
+        public int CurrentInit
+        {
+            get { return this.currentInit; }
+            set { this.currentInit = value; }
         }
         // Primary Attribute Getters/Setters
         public int Body

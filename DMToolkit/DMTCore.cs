@@ -90,13 +90,32 @@ namespace DMToolkit
             if (charListBox.SelectedItem != null)
             {
                 SimpleCharacter chara = (SimpleCharacter)charListBox.SelectedItem;
-                initTrackerArr[trackedCount] = chara;
-                initTrackerList.Add(chara);
-                trackedCount++;
-                String[] arr = { chara.Name, chara.Init.ToString() };
-                ListViewItem lvi = new ListViewItem(arr);
-                initTracker.Items.Add(lvi);
+                addToTracker(chara);
             }
+        }
+
+        private void addToTrackerWithRollsButton_Click(object sender, EventArgs e)
+        {
+            if (charListBox.SelectedItem != null)
+            {
+                SimpleCharacter chara = (SimpleCharacter)charListBox.SelectedItem;
+                Random rand = new Random();
+                int totalInit = chara.Init;
+                for (int i = 0; i < chara.InitDice; i++) {
+                    totalInit = totalInit + rand.Next(1, 7);
+                }
+                chara.CurrentInit = totalInit;
+                addToTracker(chara);
+            }
+        }
+
+        private void addToTracker(SimpleCharacter chara) {
+            initTrackerArr[trackedCount] = chara;
+            initTrackerList.Add(chara);
+            trackedCount++;
+            String[] arr = { chara.Name, chara.CurrentInit.ToString() };
+            ListViewItem lvi = new ListViewItem(arr);
+            initTracker.Items.Add(lvi);
         }
 
         private void removeFromTrackerButton_Click(object sender, EventArgs e)
@@ -111,7 +130,7 @@ namespace DMToolkit
             foreach (SimpleCharacter sc in initList) {
                 if (sc != null)
                 {
-                    String[] arr = { sc.Name, sc.Init.ToString() };
+                    String[] arr = { sc.Name, sc.CurrentInit.ToString() };
                     lvia[i] = new ListViewItem(arr);
                     i++;
                 }
@@ -153,10 +172,11 @@ namespace DMToolkit
         private void initTrackerSortButton_Click(object sender, EventArgs e)
         {
             initTracker.Items.Clear();
-            initTrackerList = initTrackerList.OrderByDescending(SimpleCharacter => SimpleCharacter.Init).ToList();
+            initTrackerList = initTrackerList.OrderByDescending(SimpleCharacter => SimpleCharacter.CurrentInit).ToList();
             ListViewItem[] lvia = makeLVIAFromArray(initTrackerList);
             initTracker.Items.AddRange(lvia);
         }
+
     }
     
 }
