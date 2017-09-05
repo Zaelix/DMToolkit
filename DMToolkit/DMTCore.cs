@@ -135,6 +135,33 @@ namespace DMToolkit
                     i++;
                 }
             }
+            initTracker.Items.Clear();
+            return lvia;
+        }
+
+        private ListViewItem[] sortInitTrackerItems() {
+            ListViewItem[] lvia = new ListViewItem[initTracker.Items.Count];
+            int count = 0;
+            Console.WriteLine("Tracker Count: " + initTracker.Items.Count);
+            while (initTracker.Items.Count > 0) {
+                ListViewItem character = new ListViewItem();
+                ListViewItem maxCha = new ListViewItem();
+                int max = 0;
+                foreach (ListViewItem cha in initTracker.Items)
+                {
+                    Console.WriteLine("Text: " + cha.Text + ", Value: " + cha.SubItems[1].Text);
+                    int chaInit = Convert.ToInt32(cha.SubItems[1].Text);
+                    if (chaInit > max) {
+                        max = chaInit;
+                        maxCha = cha;
+                        String[] arr = { cha.Text, cha.SubItems[1].Text };
+                        character = new ListViewItem(arr);
+                    }
+                }
+                initTracker.Items.Remove(maxCha);
+                lvia[count] = character;
+                count++;
+            }
             return lvia;
         }
 
@@ -171,9 +198,8 @@ namespace DMToolkit
 
         private void initTrackerSortButton_Click(object sender, EventArgs e)
         {
-            initTracker.Items.Clear();
             initTrackerList = initTrackerList.OrderByDescending(SimpleCharacter => SimpleCharacter.CurrentInit).ToList();
-            ListViewItem[] lvia = makeLVIAFromArray(initTrackerList);
+            ListViewItem[] lvia = sortInitTrackerItems();
             initTracker.Items.AddRange(lvia);
         }
 
