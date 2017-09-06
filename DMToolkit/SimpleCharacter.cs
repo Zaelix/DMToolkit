@@ -31,6 +31,7 @@ namespace DMToolkit
         private int init;
         private int currentInit;
         private int armor = 0;
+        private int[] movement;
 
         public SimpleCharacter(string charName, int initiative, int BOD, int AGI, int REA, int STR, int CHA, int INT, int LOG, int WIL)
         {
@@ -45,6 +46,7 @@ namespace DMToolkit
             this.willpower = WIL;
             this.init = REA + INT;
             this.currentInit = initiative;
+            this.movement = new int[] { AGI*2, AGI*4 , 2};
         }
 
         public string Name
@@ -128,6 +130,11 @@ namespace DMToolkit
         {
             get { return this.stunDamageMax; }
             set { this.stunDamageMax = value; }
+        }
+        public int[] Movement
+        {
+            get { return this.movement; }
+            set { this.movement = value; }
         }
     }
 }

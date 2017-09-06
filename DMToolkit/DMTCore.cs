@@ -149,7 +149,6 @@ namespace DMToolkit
                 int max = 0;
                 foreach (ListViewItem cha in initTracker.Items)
                 {
-                    Console.WriteLine("Text: " + cha.Text + ", Value: " + cha.SubItems[1].Text);
                     int chaInit = Convert.ToInt32(cha.SubItems[1].Text);
                     if (chaInit > max) {
                         max = chaInit;
@@ -203,6 +202,36 @@ namespace DMToolkit
             initTracker.Items.AddRange(lvia);
         }
 
+        private void editInitiativeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ListViewItem lvi = initTracker.SelectedItems[0];
+            EditInitiativeInputBox.Value = Convert.ToInt32(lvi.SubItems[1].Text);
+            editInitPanel.Visible = true;
+        }
+
+        private void EditInitOKButton_Click(object sender, EventArgs e)
+        {
+            initTracker.SelectedItems[0].SubItems[1].Text = EditInitiativeInputBox.Value.ToString();
+            editInitPanel.Visible = false;
+        }
+
+        private void EditInitCANCELButton_Click(object sender, EventArgs e)
+        {
+            editInitPanel.Visible = false;
+        }
+
+        private void EndTurnButton_Click(object sender, EventArgs e)
+        {
+            ListViewItem[] lvia = new ListViewItem[initTracker.Items.Count];
+            for (int i = 1; i < initTracker.Items.Count; i++) {
+                lvia[i - 1] = initTracker.Items[i];
+            }
+            ListViewItem last = initTracker.Items[0];
+            last.SubItems[1].Text = (Convert.ToInt32(last.SubItems[1].Text) - 10).ToString();
+            lvia[initTracker.Items.Count-1] = last;
+            initTracker.Items.Clear();
+            initTracker.Items.AddRange(lvia);
+        }
     }
     
 }
