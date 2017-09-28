@@ -227,10 +227,24 @@ namespace DMToolkit
                 lvia[i - 1] = initTracker.Items[i];
             }
             ListViewItem last = initTracker.Items[0];
-            last.SubItems[1].Text = (Convert.ToInt32(last.SubItems[1].Text) - 10).ToString();
+            last.SubItems[1].Text = Math.Max((Convert.ToInt32(last.SubItems[1].Text) - 10), 0).ToString();
             lvia[initTracker.Items.Count-1] = last;
             initTracker.Items.Clear();
             initTracker.Items.AddRange(lvia);
+        }
+
+        private void reactionAtrInput_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateInitBox();
+        }
+
+        private void intuitionAtrInput_ValueChanged(object sender, EventArgs e)
+        {
+            UpdateInitBox();
+        }
+
+        private void UpdateInitBox() {
+            InitTextBox.Text = (reactionAtrInput.Value + intuitionAtrInput.Value) + " + 1D6";
         }
     }
     

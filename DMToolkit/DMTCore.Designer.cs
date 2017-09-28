@@ -69,6 +69,7 @@
             this.EditInitCANCELButton = new System.Windows.Forms.Button();
             this.EditInitiativeInputBox = new System.Windows.Forms.NumericUpDown();
             this.EndTurnButton = new System.Windows.Forms.Button();
+            this.InitTextBox = new System.Windows.Forms.TextBox();
             this.combatPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.willpowerAtrInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logicAtrInput)).BeginInit();
@@ -96,6 +97,7 @@
             // 
             // combatPanel
             // 
+            this.combatPanel.Controls.Add(this.InitTextBox);
             this.combatPanel.Controls.Add(this.EndTurnButton);
             this.combatPanel.Controls.Add(this.editInitPanel);
             this.combatPanel.Controls.Add(this.addToTrackerWithRollsButton);
@@ -223,6 +225,7 @@
             0,
             0,
             0});
+            this.intuitionAtrInput.ValueChanged += new System.EventHandler(this.intuitionAtrInput_ValueChanged);
             // 
             // intuitionLabel
             // 
@@ -304,6 +307,7 @@
             0,
             0,
             0});
+            this.reactionAtrInput.ValueChanged += new System.EventHandler(this.reactionAtrInput_ValueChanged);
             // 
             // reactionLabel
             // 
@@ -422,7 +426,7 @@
             // 
             // charInitBox
             // 
-            this.charInitBox.Location = new System.Drawing.Point(710, 50);
+            this.charInitBox.Location = new System.Drawing.Point(787, 50);
             this.charInitBox.Name = "charInitBox";
             this.charInitBox.Size = new System.Drawing.Size(55, 20);
             this.charInitBox.TabIndex = 7;
@@ -566,6 +570,14 @@
             this.EndTurnButton.UseVisualStyleBackColor = true;
             this.EndTurnButton.Click += new System.EventHandler(this.EndTurnButton_Click);
             // 
+            // InitTextBox
+            // 
+            this.InitTextBox.Location = new System.Drawing.Point(716, 51);
+            this.InitTextBox.Name = "InitTextBox";
+            this.InitTextBox.ReadOnly = true;
+            this.InitTextBox.Size = new System.Drawing.Size(55, 20);
+            this.InitTextBox.TabIndex = 32;
+            // 
             // DMTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -636,6 +648,7 @@
         private System.Windows.Forms.Button EditInitOKButton;
         private System.Windows.Forms.Label editInitLabel;
         private System.Windows.Forms.Button EndTurnButton;
+        private System.Windows.Forms.TextBox InitTextBox;
     }
 }
 
