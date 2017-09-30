@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.combatButton = new System.Windows.Forms.Button();
             this.combatPanel = new System.Windows.Forms.Panel();
+            this.InitTextBox = new System.Windows.Forms.TextBox();
+            this.EndTurnButton = new System.Windows.Forms.Button();
+            this.editInitPanel = new System.Windows.Forms.Panel();
+            this.EditInitiativeInputBox = new System.Windows.Forms.NumericUpDown();
+            this.EditInitCANCELButton = new System.Windows.Forms.Button();
+            this.EditInitOKButton = new System.Windows.Forms.Button();
+            this.editInitLabel = new System.Windows.Forms.Label();
             this.addToTrackerWithRollsButton = new System.Windows.Forms.Button();
             this.removeFromTrackerButton = new System.Windows.Forms.Button();
             this.willpowerAtrInput = new System.Windows.Forms.NumericUpDown();
@@ -63,14 +70,10 @@
             this.InitiativeTrackerContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editInitiativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.initiativeTrackerLabel = new System.Windows.Forms.Label();
-            this.editInitPanel = new System.Windows.Forms.Panel();
-            this.editInitLabel = new System.Windows.Forms.Label();
-            this.EditInitOKButton = new System.Windows.Forms.Button();
-            this.EditInitCANCELButton = new System.Windows.Forms.Button();
-            this.EditInitiativeInputBox = new System.Windows.Forms.NumericUpDown();
-            this.EndTurnButton = new System.Windows.Forms.Button();
-            this.InitTextBox = new System.Windows.Forms.TextBox();
+            this.removeAllFromTrackerButton = new System.Windows.Forms.Button();
             this.combatPanel.SuspendLayout();
+            this.editInitPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EditInitiativeInputBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.willpowerAtrInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logicAtrInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.intuitionAtrInput)).BeginInit();
@@ -81,8 +84,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bodyAtrInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.charInitBox)).BeginInit();
             this.InitiativeTrackerContextMenu.SuspendLayout();
-            this.editInitPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditInitiativeInputBox)).BeginInit();
             this.SuspendLayout();
             // 
             // combatButton
@@ -97,6 +98,7 @@
             // 
             // combatPanel
             // 
+            this.combatPanel.Controls.Add(this.removeAllFromTrackerButton);
             this.combatPanel.Controls.Add(this.InitTextBox);
             this.combatPanel.Controls.Add(this.EndTurnButton);
             this.combatPanel.Controls.Add(this.editInitPanel);
@@ -134,6 +136,75 @@
             this.combatPanel.Name = "combatPanel";
             this.combatPanel.Size = new System.Drawing.Size(1092, 571);
             this.combatPanel.TabIndex = 1;
+            // 
+            // InitTextBox
+            // 
+            this.InitTextBox.Location = new System.Drawing.Point(716, 51);
+            this.InitTextBox.Name = "InitTextBox";
+            this.InitTextBox.ReadOnly = true;
+            this.InitTextBox.Size = new System.Drawing.Size(55, 20);
+            this.InitTextBox.TabIndex = 32;
+            // 
+            // EndTurnButton
+            // 
+            this.EndTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EndTurnButton.Location = new System.Drawing.Point(287, 48);
+            this.EndTurnButton.Name = "EndTurnButton";
+            this.EndTurnButton.Size = new System.Drawing.Size(84, 23);
+            this.EndTurnButton.TabIndex = 31;
+            this.EndTurnButton.Text = "END TURN";
+            this.EndTurnButton.UseVisualStyleBackColor = true;
+            this.EndTurnButton.Click += new System.EventHandler(this.EndTurnButton_Click);
+            // 
+            // editInitPanel
+            // 
+            this.editInitPanel.Controls.Add(this.EditInitiativeInputBox);
+            this.editInitPanel.Controls.Add(this.EditInitCANCELButton);
+            this.editInitPanel.Controls.Add(this.EditInitOKButton);
+            this.editInitPanel.Controls.Add(this.editInitLabel);
+            this.editInitPanel.Location = new System.Drawing.Point(287, 225);
+            this.editInitPanel.Name = "editInitPanel";
+            this.editInitPanel.Size = new System.Drawing.Size(177, 103);
+            this.editInitPanel.TabIndex = 2;
+            this.editInitPanel.Visible = false;
+            // 
+            // EditInitiativeInputBox
+            // 
+            this.EditInitiativeInputBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditInitiativeInputBox.Location = new System.Drawing.Point(10, 33);
+            this.EditInitiativeInputBox.Name = "EditInitiativeInputBox";
+            this.EditInitiativeInputBox.Size = new System.Drawing.Size(156, 29);
+            this.EditInitiativeInputBox.TabIndex = 3;
+            // 
+            // EditInitCANCELButton
+            // 
+            this.EditInitCANCELButton.Location = new System.Drawing.Point(91, 68);
+            this.EditInitCANCELButton.Name = "EditInitCANCELButton";
+            this.EditInitCANCELButton.Size = new System.Drawing.Size(75, 23);
+            this.EditInitCANCELButton.TabIndex = 2;
+            this.EditInitCANCELButton.Text = "CANCEL";
+            this.EditInitCANCELButton.UseVisualStyleBackColor = true;
+            this.EditInitCANCELButton.Click += new System.EventHandler(this.EditInitCANCELButton_Click);
+            // 
+            // EditInitOKButton
+            // 
+            this.EditInitOKButton.Location = new System.Drawing.Point(10, 68);
+            this.EditInitOKButton.Name = "EditInitOKButton";
+            this.EditInitOKButton.Size = new System.Drawing.Size(75, 23);
+            this.EditInitOKButton.TabIndex = 1;
+            this.EditInitOKButton.Text = "OK";
+            this.EditInitOKButton.UseVisualStyleBackColor = true;
+            this.EditInitOKButton.Click += new System.EventHandler(this.EditInitOKButton_Click);
+            // 
+            // editInitLabel
+            // 
+            this.editInitLabel.AutoSize = true;
+            this.editInitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editInitLabel.Location = new System.Drawing.Point(6, 10);
+            this.editInitLabel.Name = "editInitLabel";
+            this.editInitLabel.Size = new System.Drawing.Size(119, 20);
+            this.editInitLabel.TabIndex = 0;
+            this.editInitLabel.Text = "Edit Initiative:";
             // 
             // addToTrackerWithRollsButton
             // 
@@ -509,74 +580,15 @@
             this.initiativeTrackerLabel.TabIndex = 0;
             this.initiativeTrackerLabel.Text = "Initiative Tracker";
             // 
-            // editInitPanel
+            // removeAllFromTrackerButton
             // 
-            this.editInitPanel.Controls.Add(this.EditInitiativeInputBox);
-            this.editInitPanel.Controls.Add(this.EditInitCANCELButton);
-            this.editInitPanel.Controls.Add(this.EditInitOKButton);
-            this.editInitPanel.Controls.Add(this.editInitLabel);
-            this.editInitPanel.Location = new System.Drawing.Point(277, 179);
-            this.editInitPanel.Name = "editInitPanel";
-            this.editInitPanel.Size = new System.Drawing.Size(177, 103);
-            this.editInitPanel.TabIndex = 2;
-            this.editInitPanel.Visible = false;
-            // 
-            // editInitLabel
-            // 
-            this.editInitLabel.AutoSize = true;
-            this.editInitLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.editInitLabel.Location = new System.Drawing.Point(6, 10);
-            this.editInitLabel.Name = "editInitLabel";
-            this.editInitLabel.Size = new System.Drawing.Size(119, 20);
-            this.editInitLabel.TabIndex = 0;
-            this.editInitLabel.Text = "Edit Initiative:";
-            // 
-            // EditInitOKButton
-            // 
-            this.EditInitOKButton.Location = new System.Drawing.Point(10, 68);
-            this.EditInitOKButton.Name = "EditInitOKButton";
-            this.EditInitOKButton.Size = new System.Drawing.Size(75, 23);
-            this.EditInitOKButton.TabIndex = 1;
-            this.EditInitOKButton.Text = "OK";
-            this.EditInitOKButton.UseVisualStyleBackColor = true;
-            this.EditInitOKButton.Click += new System.EventHandler(this.EditInitOKButton_Click);
-            // 
-            // EditInitCANCELButton
-            // 
-            this.EditInitCANCELButton.Location = new System.Drawing.Point(91, 68);
-            this.EditInitCANCELButton.Name = "EditInitCANCELButton";
-            this.EditInitCANCELButton.Size = new System.Drawing.Size(75, 23);
-            this.EditInitCANCELButton.TabIndex = 2;
-            this.EditInitCANCELButton.Text = "CANCEL";
-            this.EditInitCANCELButton.UseVisualStyleBackColor = true;
-            this.EditInitCANCELButton.Click += new System.EventHandler(this.EditInitCANCELButton_Click);
-            // 
-            // EditInitiativeInputBox
-            // 
-            this.EditInitiativeInputBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditInitiativeInputBox.Location = new System.Drawing.Point(10, 33);
-            this.EditInitiativeInputBox.Name = "EditInitiativeInputBox";
-            this.EditInitiativeInputBox.Size = new System.Drawing.Size(156, 29);
-            this.EditInitiativeInputBox.TabIndex = 3;
-            // 
-            // EndTurnButton
-            // 
-            this.EndTurnButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EndTurnButton.Location = new System.Drawing.Point(287, 48);
-            this.EndTurnButton.Name = "EndTurnButton";
-            this.EndTurnButton.Size = new System.Drawing.Size(84, 23);
-            this.EndTurnButton.TabIndex = 31;
-            this.EndTurnButton.Text = "END TURN";
-            this.EndTurnButton.UseVisualStyleBackColor = true;
-            this.EndTurnButton.Click += new System.EventHandler(this.EndTurnButton_Click);
-            // 
-            // InitTextBox
-            // 
-            this.InitTextBox.Location = new System.Drawing.Point(716, 51);
-            this.InitTextBox.Name = "InitTextBox";
-            this.InitTextBox.ReadOnly = true;
-            this.InitTextBox.Size = new System.Drawing.Size(55, 20);
-            this.InitTextBox.TabIndex = 32;
+            this.removeAllFromTrackerButton.Location = new System.Drawing.Point(287, 155);
+            this.removeAllFromTrackerButton.Name = "removeAllFromTrackerButton";
+            this.removeAllFromTrackerButton.Size = new System.Drawing.Size(84, 23);
+            this.removeAllFromTrackerButton.TabIndex = 33;
+            this.removeAllFromTrackerButton.Text = ">>> All >>>";
+            this.removeAllFromTrackerButton.UseVisualStyleBackColor = true;
+            this.removeAllFromTrackerButton.Click += new System.EventHandler(this.removeAllFromTrackerButton_Click);
             // 
             // DMTool
             // 
@@ -589,6 +601,9 @@
             this.Text = "Dungeon Master Tool";
             this.combatPanel.ResumeLayout(false);
             this.combatPanel.PerformLayout();
+            this.editInitPanel.ResumeLayout(false);
+            this.editInitPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.EditInitiativeInputBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.willpowerAtrInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logicAtrInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.intuitionAtrInput)).EndInit();
@@ -599,9 +614,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.bodyAtrInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.charInitBox)).EndInit();
             this.InitiativeTrackerContextMenu.ResumeLayout(false);
-            this.editInitPanel.ResumeLayout(false);
-            this.editInitPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.EditInitiativeInputBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -649,6 +661,7 @@
         private System.Windows.Forms.Label editInitLabel;
         private System.Windows.Forms.Button EndTurnButton;
         private System.Windows.Forms.TextBox InitTextBox;
+        private System.Windows.Forms.Button removeAllFromTrackerButton;
     }
 }
 

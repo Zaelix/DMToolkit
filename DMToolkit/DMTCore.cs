@@ -124,6 +124,12 @@ namespace DMToolkit
             initTracker.Items.RemoveAt(initTracker.SelectedIndices[0]);
         }
 
+        private void removeAllFromTrackerButton_Click(object sender, EventArgs e)
+        {
+            initTrackerList.Clear();
+            initTracker.Items.Clear();
+        }
+
         private ListViewItem[] makeLVIAFromArray(List<SimpleCharacter> initList) {
             ListViewItem[] lvia = new ListViewItem[initList.Count];
             int i = 0;
