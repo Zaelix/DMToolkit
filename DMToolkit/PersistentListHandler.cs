@@ -31,7 +31,7 @@ namespace DMToolkit
                     }
                     catch (Exception f)
                     {
-                        System.Windows.Forms.MessageBox.Show("Unable to create new file at: " + localPath);
+                        System.Windows.Forms.MessageBox.Show("Unable to create PersistentList.txt at: " + localPath);
                         Environment.Exit(0);
                     }
 
@@ -43,13 +43,13 @@ namespace DMToolkit
                     }
                     catch (Exception g)
                     {
-                        System.Windows.Forms.MessageBox.Show("Unable to open file at: " + localPath);
+                        System.Windows.Forms.MessageBox.Show("Unable to open PersistentList.txt at: " + localPath);
                         Environment.Exit(0);
                     }
                 }
                 catch (Exception h)
                 {
-                    System.Windows.Forms.MessageBox.Show("Unable to open file at: " + localPath);
+                    System.Windows.Forms.MessageBox.Show("Unable to open PersistentList.txt at: " + localPath);
                     Environment.Exit(0);
                 }
                 
