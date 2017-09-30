@@ -74,7 +74,7 @@ namespace DMToolkit
         private static String charaListToString(List<SimpleCharacter> charaList) {
             String characters = "";
             foreach (SimpleCharacter c in charaList) {
-                characters = characters + c.Name + " " + c.Init + " " + c.Body + " " + c.Agility + " " + c.Reaction + " " + c.Strength + " " + c.Charisma + " " + c.Intuition + " " + c.Logic + " " + c.Willpower + "\r\n";
+                characters = characters + c.Name.Replace(' ', '_') + " " + c.Init + " " + c.Body + " " + c.Agility + " " + c.Reaction + " " + c.Strength + " " + c.Charisma + " " + c.Intuition + " " + c.Logic + " " + c.Willpower + "\r\n";
             }
             characters = characters + "EOF";
             return characters;

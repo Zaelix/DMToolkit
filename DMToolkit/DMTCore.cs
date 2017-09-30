@@ -120,8 +120,11 @@ namespace DMToolkit
 
         private void removeFromTrackerButton_Click(object sender, EventArgs e)
         {
-            initTrackerList.RemoveAt(initTracker.SelectedIndices[0]);
-            initTracker.Items.RemoveAt(initTracker.SelectedIndices[0]);
+            if (initTracker.SelectedIndices.Count > 0)
+            {
+                initTrackerList.RemoveAt(initTracker.SelectedIndices[0]);
+                initTracker.Items.RemoveAt(initTracker.SelectedIndices[0]);
+            }
         }
 
         private void removeAllFromTrackerButton_Click(object sender, EventArgs e)
