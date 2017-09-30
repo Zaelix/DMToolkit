@@ -17,42 +17,31 @@ namespace DMToolkit
             String localPath = AppDomain.CurrentDomain.BaseDirectory;
             if (Directory.Exists(localPath))
             {
-                StreamReader sr = null;
-                FileStream fs = null; // Used for creating file if not exists
-                try
+                if (File.Exists(localPath + "/PersistentList.txt") == false)
                 {
-                    sr = new StreamReader(localPath + "/PersistentList.txt");
-                }
-                catch (System.IO.FileNotFoundException e)
-                {
+                    FileStream fs = null;
                     try
                     {
                         fs = File.Create(localPath + "/PersistentList.txt");
                     }
-                    catch (Exception f)
+                    catch (Exception e)
                     {
-                        System.Windows.Forms.MessageBox.Show("Unable to create PersistentList.txt at: " + localPath);
+                        System.Windows.Forms.MessageBox.Show("Unable to create PersistentList.txt, check user permissions at: " + localPath);
                         Environment.Exit(0);
                     }
-
                     fs.Close();
-
-                    try
-                    {
-                        sr = new StreamReader(localPath + "/PersistentList.txt");
-                    }
-                    catch (Exception g)
-                    {
-                        System.Windows.Forms.MessageBox.Show("Unable to open PersistentList.txt at: " + localPath);
-                        Environment.Exit(0);
-                    }
                 }
-                catch (Exception h)
+                StreamReader sr = null;
+                
+                try
                 {
-                    System.Windows.Forms.MessageBox.Show("Unable to open PersistentList.txt at: " + localPath);
+                    sr = new StreamReader(localPath + "/PersistentList.txt");
+                }
+                catch (Exception f)
+                {
+                    System.Windows.Forms.MessageBox.Show("Unable to open PersistentList.txt (file opened by another program?) at: " + localPath);
                     Environment.Exit(0);
                 }
-                
 
                 String lineContents = "";
                 lineContents = sr.ReadLine();
