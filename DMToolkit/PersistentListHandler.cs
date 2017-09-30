@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DMToolkit
 {
@@ -16,7 +17,42 @@ namespace DMToolkit
             String localPath = AppDomain.CurrentDomain.BaseDirectory;
             if (Directory.Exists(localPath))
             {
-                StreamReader sr = new StreamReader(localPath + "/PersistentList.txt");
+                StreamReader sr = null;
+                FileStream fs = null; // Used for creating file if not exists
+                try
+                {
+                    sr = new StreamReader(localPath + "/PersistentList.txt");
+                }
+                catch (System.IO.FileNotFoundException e)
+                {
+                    try
+                    {
+                        fs = File.Create(localPath + "/PersistentList.txt");
+                    }
+                    catch (Exception f)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Unable to create new file at: " + localPath);
+                        Environment.Exit(0);
+                    }
+
+                    fs.Close();
+
+                    try
+                    {
+                        sr = new StreamReader(localPath + "/PersistentList.txt");
+                    }
+                    catch (Exception g)
+                    {
+                        System.Windows.Forms.MessageBox.Show("Unable to open file at: " + localPath);
+                        Environment.Exit(0);
+                    }
+                }
+                catch (Exception h)
+                {
+                    System.Windows.Forms.MessageBox.Show("Unable to open file at: " + localPath);
+                    Environment.Exit(0);
+                }
+                
 
                 String lineContents = "";
                 lineContents = sr.ReadLine();
