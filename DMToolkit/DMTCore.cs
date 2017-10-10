@@ -231,15 +231,17 @@ namespace DMToolkit
 
         private void EndTurnButton_Click(object sender, EventArgs e)
         {
-            ListViewItem[] lvia = new ListViewItem[initTracker.Items.Count];
-            for (int i = 1; i < initTracker.Items.Count; i++) {
-                lvia[i - 1] = initTracker.Items[i];
+            if (initTracker.Items.Count > 0) {
+                ListViewItem[] lvia = new ListViewItem[initTracker.Items.Count];
+                for (int i = 1; i < initTracker.Items.Count; i++) {
+                    lvia[i - 1] = initTracker.Items[i];
+                }
+                ListViewItem last = initTracker.Items[0];
+                last.SubItems[1].Text = Math.Max((Convert.ToInt32(last.SubItems[1].Text) - 10), 0).ToString();
+                lvia[initTracker.Items.Count - 1] = last;
+                initTracker.Items.Clear();
+                initTracker.Items.AddRange(lvia);
             }
-            ListViewItem last = initTracker.Items[0];
-            last.SubItems[1].Text = Math.Max((Convert.ToInt32(last.SubItems[1].Text) - 10), 0).ToString();
-            lvia[initTracker.Items.Count-1] = last;
-            initTracker.Items.Clear();
-            initTracker.Items.AddRange(lvia);
         }
 
         private void reactionAtrInput_ValueChanged(object sender, EventArgs e)
