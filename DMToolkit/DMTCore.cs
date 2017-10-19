@@ -213,15 +213,21 @@ namespace DMToolkit
 
         private void editInitiativeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ListViewItem lvi = initTracker.SelectedItems[0];
-            EditInitiativeInputBox.Value = Convert.ToInt32(lvi.SubItems[1].Text);
-            editInitPanel.Visible = true;
+            if (initTracker.SelectedItems.Count > 0)
+            {
+                ListViewItem lvi = initTracker.SelectedItems[0];
+                EditInitiativeInputBox.Value = Convert.ToInt32(lvi.SubItems[1].Text);
+                editInitPanel.Visible = true;
+            }
         }
 
         private void EditInitOKButton_Click(object sender, EventArgs e)
         {
-            initTracker.SelectedItems[0].SubItems[1].Text = EditInitiativeInputBox.Value.ToString();
-            editInitPanel.Visible = false;
+            if (initTracker.SelectedItems[0] != null)
+            {
+                initTracker.SelectedItems[0].SubItems[1].Text = EditInitiativeInputBox.Value.ToString();
+                editInitPanel.Visible = false;
+            }
         }
 
         private void EditInitCANCELButton_Click(object sender, EventArgs e)
