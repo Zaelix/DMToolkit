@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChummerCharacter.cs" />
     <Compile Include="PersistentListHandler.cs" />
     <Compile Include="DMTCore.cs">
       <SubType>Form</SubType>

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.combatButton = new System.Windows.Forms.Button();
             this.combatPanel = new System.Windows.Forms.Panel();
+            this.removeAllFromTrackerButton = new System.Windows.Forms.Button();
             this.InitTextBox = new System.Windows.Forms.TextBox();
             this.EndTurnButton = new System.Windows.Forms.Button();
             this.editInitPanel = new System.Windows.Forms.Panel();
@@ -70,7 +71,8 @@
             this.InitiativeTrackerContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editInitiativeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.initiativeTrackerLabel = new System.Windows.Forms.Label();
-            this.removeAllFromTrackerButton = new System.Windows.Forms.Button();
+            this.ImportCharacterButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.combatPanel.SuspendLayout();
             this.editInitPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EditInitiativeInputBox)).BeginInit();
@@ -98,6 +100,7 @@
             // 
             // combatPanel
             // 
+            this.combatPanel.Controls.Add(this.ImportCharacterButton);
             this.combatPanel.Controls.Add(this.removeAllFromTrackerButton);
             this.combatPanel.Controls.Add(this.InitTextBox);
             this.combatPanel.Controls.Add(this.EndTurnButton);
@@ -136,6 +139,16 @@
             this.combatPanel.Name = "combatPanel";
             this.combatPanel.Size = new System.Drawing.Size(1092, 571);
             this.combatPanel.TabIndex = 1;
+            // 
+            // removeAllFromTrackerButton
+            // 
+            this.removeAllFromTrackerButton.Location = new System.Drawing.Point(287, 155);
+            this.removeAllFromTrackerButton.Name = "removeAllFromTrackerButton";
+            this.removeAllFromTrackerButton.Size = new System.Drawing.Size(84, 23);
+            this.removeAllFromTrackerButton.TabIndex = 33;
+            this.removeAllFromTrackerButton.Text = ">>> All >>>";
+            this.removeAllFromTrackerButton.UseVisualStyleBackColor = true;
+            this.removeAllFromTrackerButton.Click += new System.EventHandler(this.removeAllFromTrackerButton_Click);
             // 
             // InitTextBox
             // 
@@ -580,15 +593,20 @@
             this.initiativeTrackerLabel.TabIndex = 0;
             this.initiativeTrackerLabel.Text = "Initiative Tracker";
             // 
-            // removeAllFromTrackerButton
+            // ImportCharacterButton
             // 
-            this.removeAllFromTrackerButton.Location = new System.Drawing.Point(287, 155);
-            this.removeAllFromTrackerButton.Name = "removeAllFromTrackerButton";
-            this.removeAllFromTrackerButton.Size = new System.Drawing.Size(84, 23);
-            this.removeAllFromTrackerButton.TabIndex = 33;
-            this.removeAllFromTrackerButton.Text = ">>> All >>>";
-            this.removeAllFromTrackerButton.UseVisualStyleBackColor = true;
-            this.removeAllFromTrackerButton.Click += new System.EventHandler(this.removeAllFromTrackerButton_Click);
+            this.ImportCharacterButton.Enabled = false;
+            this.ImportCharacterButton.Location = new System.Drawing.Point(851, 21);
+            this.ImportCharacterButton.Name = "ImportCharacterButton";
+            this.ImportCharacterButton.Size = new System.Drawing.Size(95, 23);
+            this.ImportCharacterButton.TabIndex = 34;
+            this.ImportCharacterButton.Text = "Import Character";
+            this.ImportCharacterButton.UseVisualStyleBackColor = true;
+            this.ImportCharacterButton.Click += new System.EventHandler(this.ImportCharacterButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // DMTool
             // 
@@ -662,6 +680,8 @@
         private System.Windows.Forms.Button EndTurnButton;
         private System.Windows.Forms.TextBox InitTextBox;
         private System.Windows.Forms.Button removeAllFromTrackerButton;
+        private System.Windows.Forms.Button ImportCharacterButton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
