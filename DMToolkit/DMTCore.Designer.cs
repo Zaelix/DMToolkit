@@ -595,7 +595,6 @@
             // 
             // ImportCharacterButton
             // 
-            this.ImportCharacterButton.Enabled = false;
             this.ImportCharacterButton.Location = new System.Drawing.Point(851, 21);
             this.ImportCharacterButton.Name = "ImportCharacterButton";
             this.ImportCharacterButton.Size = new System.Drawing.Size(95, 23);
