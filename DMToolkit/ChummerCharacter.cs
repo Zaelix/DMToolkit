@@ -17,8 +17,11 @@ namespace DMToolkit
 
         //[XmlArrayItem("character")]
 
-        [XmlAttribute("alias")]
+        [XmlElement("alias")]
         public string alias;
+
+        [XmlElement("primaryarm")]
+        public string primaryarm;
 
         //[XmlAttribute("attributes")]
         //public Object attributes;
@@ -31,7 +34,7 @@ namespace DMToolkit
                 doc.Load(path);
                 XmlSerializer serializer = new XmlSerializer(typeof(ChummerCharacter));
 
-                StringReader reader = new StringReader(doc.ToString());
+                StringReader reader = new StringReader(doc.OuterXml);
 
                 ChummerCharacter character = serializer.Deserialize(reader) as ChummerCharacter;
 

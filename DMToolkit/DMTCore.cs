@@ -271,6 +271,8 @@ namespace DMToolkit
             {
                 string file = openFileDialog1.FileName;
                 ChummerCharacter cc = ChummerCharacter.Load(file);
+                string name = cc.alias;
+                string arm = cc.primaryarm;
                 SimpleCharacter cha = new SimpleCharacter(cc.alias, 1, 1, 1, 1, 1, 1, 1, 1, 1);
                 addCharacterToCharacterList(cha);
             }
