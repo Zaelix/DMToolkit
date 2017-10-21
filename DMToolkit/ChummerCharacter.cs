@@ -15,13 +15,19 @@ namespace DMToolkit
     public class ChummerCharacter
     {
 
-        //[XmlArrayItem("character")]
+        
 
         [XmlElement("alias")]
         public string alias;
 
         [XmlElement("primaryarm")]
         public string primaryarm;
+
+        [XmlArray("character")]
+        [XmlArrayItem("attribute")]
+        //[XmlElement("attribute")]
+        public List<Attribute> attributes;
+        //public Attribute[] attributes;
 
         //[XmlAttribute("attributes")]
         //public Object attributes;
@@ -35,10 +41,15 @@ namespace DMToolkit
                 XmlSerializer serializer = new XmlSerializer(typeof(ChummerCharacter));
 
                 StringReader reader = new StringReader(doc.OuterXml);
+                StringReader attReader = new StringReader(doc.OuterXml);
 
                 ChummerCharacter character = serializer.Deserialize(reader) as ChummerCharacter;
-
+                while(attReader.Peek() > 0)
+                {
+                    character.attributes.Add(serializer.Deserialize(attReader) as Attribute);
+                }
                 reader.Close();
+                attReader.Close();
 
                 return character;
             }
