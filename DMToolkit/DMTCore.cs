@@ -263,6 +263,22 @@ namespace DMToolkit
         private void UpdateInitBox() {
             InitTextBox.Text = (reactionAtrInput.Value + intuitionAtrInput.Value) + " + 1D6";
         }
+
+        private void ImportCharacterButton_Click(object sender, EventArgs e)
+        {
+            DialogResult res = openFileDialog1.ShowDialog();
+            if (res == DialogResult.OK) // Test result.
+            {
+                string file = openFileDialog1.FileName;
+                ChummerCharacter cc = ChummerCharacter.Load(file);
+                cc.ParseAttributes();
+                string name = cc.alias;
+                //string arm = cc.primaryarm;
+                SimpleCharacter cha = new SimpleCharacter(cc.alias, 1, cc.BOD, cc.AGI, cc.REA, cc.STR, cc.CHA, cc.INT, cc.LOG, cc.WIL);
+                addCharacterToCharacterList(cha);
+            }
+            PersistentListHandler.WriteListFile(charList);
+        }
     }
     
 }
